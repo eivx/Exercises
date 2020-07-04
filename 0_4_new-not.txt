@@ -1,0 +1,20 @@
+browser ->> sever : HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note
+note over sever : 
+Response code 302, url redirect to /notes
+end note
+
+sever ->> browser : https://fullstack-exampleapp.herokuapp.com/notes
+note over browser:
+Reload the /notes page, get html, css, js, json
+end note
+browser ->> sever : HTTP GET https://fullstack-exampleapp.herokuapp.com/notes
+sever ->> browser : html code
+browser ->> sever : HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+sever ->> browser : main.css
+browser ->> sever : HTTP GET https://fullstack-exampleapp.herokuapp.com/main.js
+sever ->> browser : main.jss
+browser ->> sever : HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+sever ->> browser : data.json
+note over browser :
+Display / notes
+end note

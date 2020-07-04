@@ -1,0 +1,8 @@
+browser ->> sever : HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
+sever ->> browser : html code
+browser ->> sever : HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+sever ->> browser : main.css
+browser ->> sever : HTTP GET https://fullstack-exampleapp.herokuapp.com/spa.js
+sever ->> browser : spa.js
+browser ->> sever : HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+sever ->> browser : { Content-Type: application/json; Date: Sat, 04 Jul 2020 09:06:49 GMT}

@@ -1,0 +1,2 @@
+note over browser : run spa.js
+browser ->> sever : HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
