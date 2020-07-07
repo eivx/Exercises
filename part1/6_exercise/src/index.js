@@ -1,8 +1,8 @@
 /*
- * @Author: SileR 
- * @Date: 2020-07-07 13:43:11 
+ * @Author: SileR
+ * @Date: 2020-07-07 13:43:11
  * @Last Modified by: SileR
- * @Last Modified time: 2020-07-07 13:46:11
+ * @Last Modified time: 2020-07-07 14:25:53
  */
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
@@ -28,7 +28,7 @@ const Statistics = ({good,neutral,bad,feedbackOj}) => {
           <Statistic text = {feedbackOj.bad.text} value = {feedbackOj.bad.value} />
           <Statistic text = {feedbackOj.all.text} value = {feedbackOj.all.value} />
           <Statistic text = {feedbackOj.average.text} value = {feedbackOj.average.value} />
-          <Statistic text = {feedbackOj.postitive.text} value = {feedbackOj.postitive.value} />
+          <Statistic text = {feedbackOj.positive.text} value = {feedbackOj.positive.value} />
         </tbody>
       </table>
     </div>
@@ -66,8 +66,8 @@ const App = () => {
       text : "average ",
       value : (((good*1)+(neutral*0)+(bad*-1))/(good+neutral+bad))
     },
-    postitive : {
-      text : "postitive ",
+    positive : {
+      text : "positive ",
       value : ((good/(good+neutral+bad))/100 + " %")
     }
   }
@@ -84,6 +84,6 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<App />, 
+ReactDOM.render(<App />,
   document.getElementById('root')
 )
