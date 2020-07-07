@@ -1,8 +1,8 @@
 /*
  * @Author: SileR 
  * @Date: 2020-07-07 13:43:11 
- * @Last Modified by:   SileR 
- * @Last Modified time: 2020-07-07 13:43:11 
+ * @Last Modified by: SileR
+ * @Last Modified time: 2020-07-07 13:46:11
  */
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
@@ -23,13 +23,13 @@ const Statistics = ({good,neutral,bad,feedbackOj}) => {
     <div>
       <table>
         <tbody>
-      <Statistic text = {feedbackOj.good.text} value = {feedbackOj.good.value} />
-      <Statistic text = {feedbackOj.neutral.text} value = {feedbackOj.neutral.value} />
-      <Statistic text = {feedbackOj.bad.text} value = {feedbackOj.bad.value} />
-      <Statistic text = {feedbackOj.all.text} value = {feedbackOj.all.value} />
-      <Statistic text = {feedbackOj.average.text} value = {feedbackOj.average.value} />
-      <Statistic text = {feedbackOj.postitive.text} value = {feedbackOj.postitive.value} />
-      </tbody>
+          <Statistic text = {feedbackOj.good.text} value = {feedbackOj.good.value} />
+          <Statistic text = {feedbackOj.neutral.text} value = {feedbackOj.neutral.value} />
+          <Statistic text = {feedbackOj.bad.text} value = {feedbackOj.bad.value} />
+          <Statistic text = {feedbackOj.all.text} value = {feedbackOj.all.value} />
+          <Statistic text = {feedbackOj.average.text} value = {feedbackOj.average.value} />
+          <Statistic text = {feedbackOj.postitive.text} value = {feedbackOj.postitive.value} />
+        </tbody>
       </table>
     </div>
   )
