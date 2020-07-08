@@ -89,7 +89,7 @@ const App = () => {
     <div>
       <h1>give feedback</h1>
       <Button onClick={goodClick} text="good" />
-      <Button onClick={neutralClick} text="neutra" />
+      <Button onClick={neutralClick} text="neutral" />
       <Button onClick={badClick} text="bad" />
       <h1>statistics</h1>
       <Statistics
