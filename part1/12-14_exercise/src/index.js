@@ -2,7 +2,7 @@
  * @Author: SileR
  * @Date: 2020-07-07 15:13:26
  * @Last Modified by: SileR
- * @Last Modified time: 2020-07-07 17:53:15
+ * @Last Modified time: 2020-07-07 18:16:09
  */
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
@@ -10,6 +10,7 @@ import ReactDOM from "react-dom";
 const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>;
 
 const VoteDisplay = ({ vote }) => <h3>has {vote} votes</h3>;
+
 
 const App = ({ anecdotes }) => {
   const [selected, setSelected] = useState(0);
