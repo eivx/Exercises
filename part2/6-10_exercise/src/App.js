@@ -2,7 +2,7 @@
  * @Author: SileR
  * @Date: 2020-07-09 17:55:32
  * @Last Modified by: SileR
- * @Last Modified time: 2020-07-09 19:54:00
+ * @Last Modified time: 2020-07-10 10:47:50
  */
 import React, { useState } from "react";
 const PersonsDisplay = ({ persons }) =>
