@@ -1,4 +1,5 @@
 require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -12,14 +13,14 @@ app.get("/api/persons", (req, res) => {
     res.json(person);
   });
 });
-app.get("/info",(req,res)=>{
+app.get("/info", (req, res) => {
   const time = new Date();
-  Person.countDocuments({},(err,count)=>{
+  Person.countDocuments({}, (err, count) => {
     res.send(
       `<div><p>Phone book has info for ${count} people</p><p>${time}</p></div>`
     );
-  })
-})
+  });
+});
 app.get("/api/persons/:id", (req, res, next) => {
   Person.findById(req.params.id)
     .then((person) => {
@@ -39,8 +40,7 @@ app.delete("/api/persons/:id", (req, res, next) => {
     })
     .catch((error) => next(error));
 });
-
-app.post("/api/persons", (req, res) => {
+app.post("/api/persons", (req, res, next) => {
   const body = req.body;
   if (!body.name) {
     return res.status(400).json({ error: "name missing" });
@@ -50,9 +50,12 @@ app.post("/api/persons", (req, res) => {
     number: parseInt(body.number),
     date: new Date(),
   });
-  person.save().then((savePerson) => {
-    res.json(savePerson);
-  });
+  person
+    .save()
+    .then((savePerson) => {
+      res.json(savePerson);
+    })
+    .catch((error) => next(error));
 });
 
 app.put("/api/persons/:id", (req, res, next) => {
@@ -72,6 +75,8 @@ const errorHandler = (error, req, res, next) => {
   console.error(error.message);
   if (error.name === "CastError" && error.kind === "ObjectId") {
     return res.status(400).send({ error: "malformatted id" });
+  } else if (error.name === "ValidationError") {
+    return res.status(400).send({ error: "值不为唯一" });
   }
   next(error);
 };

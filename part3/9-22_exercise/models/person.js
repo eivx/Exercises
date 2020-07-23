@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
-mongoose.set('useFindAndModify', false)
+const uniqueValidator = require("mongoose-unique-validator");
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
 const url = process.env.MONGODB_URL;
 console.log("url为: ", url);
 
@@ -13,10 +17,19 @@ mongoose
   });
 
 const personSchema = new mongoose.Schema({
-  name: String,
-  number: Number,
+  name: {
+    type: String,
+    required: true,
+    unique:true
+  },
+  number: {
+    type: Number,
+  },
   date: Date,
 });
+
+
+personSchema.plugin(uniqueValidator);
 
 personSchema.set("toJSON", {
   transform: (document, returnObj) => {
@@ -25,5 +38,6 @@ personSchema.set("toJSON", {
     delete returnObj.__v;
   },
 });
+
 
 module.exports = mongoose.model("Person", personSchema);

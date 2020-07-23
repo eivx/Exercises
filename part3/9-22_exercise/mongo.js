@@ -6,9 +6,7 @@ if (process.argv.length < 3) {
   process.exit(1);
 }
 
-const pas = process.argv[2];
-
-const url = `mongodb+srv://eivx:jmkz1820@cluster0.v1rly.mongodb.net/phoneBook?retryWrites=true&w=majority`;
+const url = ``;
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -23,7 +21,7 @@ const Person = mongoose.model("Person", personSchema);
 if (process.argv.length === 3) {
   console.log("开始查找");
   Person.find({}).then((result) => {
-      console.log("phone book")
+    console.log("phone book");
     result.forEach((person) => {
       console.log(`${person.name} ${person.number}`);
     });
