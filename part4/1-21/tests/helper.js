@@ -1,4 +1,5 @@
-const listHelper = require('../utils/list_helper');
+const Blog = require('../models/blog');
+const User = require('../models/user');
 
 const listWithOneBlog = [
   {
@@ -53,37 +54,20 @@ const listWithOneBlog = [
     __v: 0,
   },
 ];
+const getAllBlog = async () => {
+  console.log('开始连接');
+  const blogs = await Blog.find({});
+  return blogs.map((blog) => blog.toJSON());
+};
 
-test('dummy returns one', () => {
-  const blogs = [];
-  const result = listHelper.dummy(blogs);
-  expect(result).toBe(1);
-});
+const getAllUser = async () => {
+  console.log('开始连接用户数据库');
+  const users = await User.find({});
+  return users.map((r) => r.toJSON());
+};
 
-describe('total likes', () => {
-  test('when list has only one blog equals the like of that', () => {
-    const result = listHelper.totalLikes(listWithOneBlog);
-    expect(result).toBe(36);
-  });
-});
-
-describe('blog likes max', () => {
-  test('Return to the blog with the most likes', () => {
-    const result = listHelper.favoriteBlog(listWithOneBlog);
-    expect(result).toEqual(listWithOneBlog[2]);
-  });
-});
-
-describe('Most blog authors', () => {
-  const result = listHelper.mostBlogs(listWithOneBlog);
-  test('Author with the most blogs', () => {
-    expect(result).toEqual({ author: 'Robert C. Martin', maxNum: 3 });
-  });
-});
-
-describe('Most Likes', () => {
-  const result = listHelper.mostLikes(listWithOneBlog);
-  test('Author with the most likes', () => {
-    expect(result).toEqual({ author: 'Edsger W. Dijkstra', likes: 17 });
-  });
-});
+module.exports = {
+  listWithOneBlog,
+  getAllBlog,
+  getAllUser,
+};
